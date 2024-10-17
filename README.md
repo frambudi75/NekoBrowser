@@ -1,26 +1,33 @@
-# NekoBrowser
-NekoBrowser 2.1.1 adalah aplikasi otomatisasi browser dengan fitur pembaruan dan optimasi untuk mengelola penggunaan memori dan CPU, serta fleksibilitas dalam pengaturan URL.Aplikasi ini dapat digunakan untuk membuka URL spesifik dalam mode layar penuh dan melakukan refresh otomatis setiap hari pada jam 00:00.
+# NekoBrowser 2.1.1
 
+**NekoBrowser 2.1.1** adalah aplikasi otomatisasi browser yang dirancang untuk mengoptimalkan penggunaan memori dan CPU, serta menyediakan fleksibilitas dalam pengaturan URL. Aplikasi ini memungkinkan Anda untuk membuka URL dalam mode layar penuh dengan pembaruan otomatis setiap hari pada jam 00:00.
 
-"Deskripsi Aplikasi",
-        - NekoBrowser adalah aplikasi yang dirancang untuk memantau dan mengelola browser secara otomatis
-        - Update Patch NekoBrowser 2.1.1:
-        - Hapus cache & log browser setiap re-open.
-        - Re-open browser otomatis setiap jam 00:00.
-        - Optimisasi penggunaan RAM dan CPU.
-        - Ubah URL default dengan Ctrl + Z.
-        - Delay pengecekan status browser setiap 30 detik.
-        - URL tetap tersimpan meskipun PC atau aplikasi di-restart.
-"Cara Menggunakan Aplikasi",
-        1. Menjalankan Aplikasi: Klik dua kali pada NekoBrowser 2.1.1.exe.
-        2. Mengubah URL (Ctrl+Z): Tekan Ctrl+Z untuk memasukkan URL baru.
-        3. Fitur Otomatis 00:00: Browser akan re-open otomatis tiap 00:00.
-        4. Optimasi RAM/CPU: Aplikasi mengurangi pemakaian sumber daya.
-        5. Pemantauan Browser: Memastikan browser tetap aktif setiap 30 detik.
-"Troubleshooting",
-        - Browser tidak terbuka otomatis: Pastikan aplikasi punya izin.
-        - URL tidak tersimpan: Tekan Enter setelah masukkan URL.
-        - CPU Chrome tinggi: Upgrade hardware jika memungkinkan.
-"Catatan Tambahan"
-        - Restart otomatis menjaga kelancaran monitoring.
-        - Fleksibilitas URL: Masukkan URL dengan http:// atau https://.
+## Deskripsi Aplikasi
+
+NekoBrowser dirancang untuk memantau dan mengelola browser secara otomatis. Berikut adalah fitur utama pada patch NekoBrowser 2.1.1:
+
+- **Hapus cache & log browser** setiap kali browser re-open.
+- **Re-open browser otomatis** setiap hari pada jam 00:00.
+- **Optimisasi RAM dan CPU** untuk efisiensi kinerja.
+- **Ubah URL default** menggunakan pintasan Ctrl + Z.
+- **Delay pengecekan** status browser setiap 30 detik.
+- **Penyimpanan URL yang berkelanjutan**: URL tetap tersimpan bahkan setelah PC atau aplikasi di-restart.
+
+## Cara Menggunakan Aplikasi
+
+1. **Menjalankan Aplikasi**: Klik dua kali pada `NekoBrowser 2.1.1.exe`.
+2. **Mengubah URL (Ctrl+Z)**: Tekan `Ctrl+Z` untuk memasukkan URL baru.
+3. **Fitur Otomatis 00:00**: Browser akan terbuka kembali secara otomatis pada jam 00:00 setiap hari.
+4. **Optimasi RAM/CPU**: Aplikasi mengurangi penggunaan sumber daya agar lebih efisien.
+5. **Pemantauan Browser**: Aplikasi memeriksa status browser setiap 30 detik untuk memastikan tetap aktif.
+
+## Troubleshooting
+
+- **Browser tidak terbuka otomatis**: Pastikan aplikasi memiliki izin yang dibutuhkan.
+- **URL tidak tersimpan**: Pastikan untuk menekan `Enter` setelah memasukkan URL baru.
+- **Penggunaan CPU pada Chrome tinggi**: Pertimbangkan upgrade hardware jika memungkinkan.
+
+## Catatan Tambahan
+
+- **Restart otomatis** pada jam 00:00 membantu menjaga kelancaran monitoring.
+- **Fleksibilitas URL**: Pastikan URL dimasukkan dengan format `http://` atau `https://`.
