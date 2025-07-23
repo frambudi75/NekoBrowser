@@ -1,0 +1,6 @@
+di linux buat file nekobrowser.service 
+lalu ketik perintah di bawah,ingat nekobrowser.py harus 1 tempat
+
+sudo systemctl daemon-reexec
+sudo systemctl enable nekobrowser
+sudo systemctl start nekobrowser

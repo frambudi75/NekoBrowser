@@ -1,0 +1,12 @@
+[Unit]
+Description=NekoBrowser Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/user/NekoBrowser/neko_enhanced.py
+WorkingDirectory=/home/user/NekoBrowser
+Restart=always
+User=user
+
+[Install]
+WantedBy=multi-user.target

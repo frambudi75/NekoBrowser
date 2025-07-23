@@ -96,3 +96,9 @@
 2025-07-24 00:59:40,171 - INFO - 127.0.0.1 - - [24/Jul/2025 00:59:40] "[32mPOST /config HTTP/1.1[0m" 302 -
 2025-07-24 00:59:40,171 - INFO - 127.0.0.1 - - [24/Jul/2025 00:59:40] "GET /config HTTP/1.1" 200 -
 2025-07-24 00:59:45,844 - INFO - 127.0.0.1 - - [24/Jul/2025 00:59:45] "GET / HTTP/1.1" 200 -
+2025-07-24 01:39:01,551 - INFO - NekoBrowser mulai...
+2025-07-24 01:39:02,625 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.158:5000
+2025-07-24 01:39:02,625 - INFO - [33mPress CTRL+C to quit[0m
