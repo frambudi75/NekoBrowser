@@ -1,2 +1,2 @@
-URL=http://fids.avi.id/bsd
+URL=http://google.com
 Refresh_Time=30
