@@ -1,327 +1,208 @@
+### PERBAIKAN UTAMA ###
+# - Duplikasi kode dihilangkan
+# - Struktur diperjelas dan tidak redundant
+# - Pemanggilan fungsi `main()` diatur
+# - Flask dijalankan di thread terpisah
+# - Gabungkan setting baca/simpan menjadi satu sumber
+# - Tambah pengamanan dan pengecekan
+
+import os
+import sys
 import psutil
 import time
-import subprocess
-import threading
-from datetime import datetime, timedelta
-import tkinter as tk
-from tkinter import messagebox
-import os
-import logging
-from functools import lru_cache
 import signal
-import sys
+import json
+import requests
+import subprocess
+import logging
+import traceback
+from flask import Flask, request, jsonify
+from datetime import datetime, timedelta
+from functools import lru_cache
+import threading
+import tkinter as tk
+from tkinter import messagebox, ttk
 
-# Setup logging yang lebih efisien
+# CONFIG
+SETTINGS_FILE = 'settings.txt'
+CONFIG_FILE = 'config.json'
+TELEGRAM_FILE = 'telegram_settings.txt'
+
+# LOGGING
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('nekobrowser.log'),
-        logging.StreamHandler() if os.getenv('DEBUG') else logging.NullHandler()
+        logging.FileHandler('nekobrowser_enhanced.log'),
+        logging.StreamHandler(sys.stdout)
     ]
 )
 logger = logging.getLogger(__name__)
 
-# File untuk menyimpan URL dan pengaturan lainnya
-settings_file_path = 'settings.txt'
+# GLOBAL SETTINGS
+settings = {
+    'URL': 'http://google.com',
+    'Refresh_Time': '86400',
+}
+telegram_config = {
+    'Telegram_Token': '',
+    'Telegram_Chat_ID': ''
+}
 
-def read_settings():
-    """Baca pengaturan dari file settings.txt."""
-    settings = {}
-    try:
-        if os.path.exists(settings_file_path):
-            with open(settings_file_path, 'r') as file:
-                for line in file:
-                    if '=' in line:
-                        key, value = line.strip().split('=', 1)
-                        settings[key] = value
-    except Exception as e:
-        logger.error(f"Error membaca settings: {e}")
-    return settings
+# Load settings
+if os.path.exists(SETTINGS_FILE):
+    with open(SETTINGS_FILE) as f:
+        for line in f:
+            if '=' in line:
+                k, v = line.strip().split('=', 1)
+                settings[k] = v
 
-def write_settings(url, refresh_time):
-    """Simpan pengaturan ke settings.txt."""
-    try:
-        with open(settings_file_path, 'w') as file:
-            file.write(f"URL={url}\n")
-            file.write(f"Refresh_Time={refresh_time}\n")
-    except Exception as e:
-        logger.error(f"Error menyimpan settings: {e}")
+# Load Telegram settings
+if os.path.exists(TELEGRAM_FILE):
+    with open(TELEGRAM_FILE) as f:
+        for line in f:
+            if '=' in line:
+                k, v = line.strip().split('=', 1)
+                telegram_config[k] = v
 
-# Baca pengaturan dari file
-settings = read_settings()
-url = settings.get('URL', 'http://google.com')
-refresh_time = int(settings.get('Refresh_Time', '86400'))
-browser_process_name = 'chrome'
+url = settings.get('URL')
+refresh_time = int(settings.get('Refresh_Time', 86400))
 
-# Cache untuk process check
+# FUNCTIONS
 @lru_cache(maxsize=1)
-def is_browser_running_cached():
-    """Periksa browser dengan caching untuk efisiensi."""
-    try:
-        for proc in psutil.process_iter(['name'], ad_value=None):
-            if proc.info['name'] and browser_process_name.lower() in proc.info['name'].lower():
-                return True
-        return False
-    except (psutil.NoSuchProcess, psutil.AccessDenied):
-        return False
-
 def is_browser_running():
-    """Wrapper untuk cache dengan TTL 2 menit."""
-    return is_browser_running_cached()
+    for proc in psutil.process_iter(['name']):
+        if proc.info['name'] and 'chrome' in proc.info['name'].lower():
+            return True
+    return False
 
 def clear_browser_cache():
-    """Clear cache process check."""
-    is_browser_running_cached.cache_clear()
+    is_browser_running.cache_clear()
 
-import requests
-import traceback
+def close_browser():
+    for proc in psutil.process_iter(['name', 'pid']):
+        if proc.info['name'] and 'chrome' in proc.info['name'].lower():
+            try:
+                proc.terminate()
+            except Exception:
+                continue
+    clear_browser_cache()
 
-def check_url_accessible(url):
-    """Cek apakah URL bisa diakses."""
-    try:
-        response = requests.get(url, timeout=10)
-        return response.status_code == 200
-    except Exception as e:
-        logger.error(f"Error cek URL: {e}")
-        return True  # Tetap lanjut meskipun URL tidak bisa dicek
-
-def open_browser_fullscreen(url):
-    """Buka browser Chrome dalam mode fullscreen dengan optimasi."""
+def open_browser(url):
     chrome_paths = [
         r'C:\Program Files\Google\Chrome\Application\chrome.exe',
         r'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe',
-        r'C:\Users\{}\AppData\Local\Google\Chrome\Application\chrome.exe'.format(os.getenv('USERNAME'))
+        rf'C:\Users\{os.getenv("USERNAME")}\AppData\Local\Google\Chrome\Application\chrome.exe'
     ]
-    
-    chrome_path = None
-    for path in chrome_paths:
-        if os.path.exists(path):
-            chrome_path = path
-            break
-    
+    chrome_path = next((p for p in chrome_paths if os.path.exists(p)), None)
     if not chrome_path:
-        logger.error("Chrome tidak ditemukan di semua lokasi!")
+        logger.error("Chrome tidak ditemukan")
         return False
-    
     try:
-        # Skip pengecekan URL untuk menghindari blocking
-        logger.info(f"Membuka Chrome dari: {chrome_path}")
-        
-        # Gunakan flags yang lebih aman
-        cmd = [
-            chrome_path,
-            '--start-fullscreen',
-            '--disable-extensions',
-            '--disable-gpu',
-            '--disable-background-networking',
-            '--disable-translate',
-            '--disable-sync',
-            '--disable-default-apps',
-            '--no-first-run',
-            '--disable-background-timer-throttling',
-            '--disable-renderer-backgrounding',
-            '--disable-backgrounding-occluded-windows',
-            '--disable-features=VizDisplayCompositor',
-            '--disable-infobars',
-            '--overscroll-history-navigation=0',
-            '--disable-web-security',  # Untuk bypass CORS
-            '--allow-running-insecure-content',  # Untuk konten HTTP
-            url
-        ]
-        
-        logger.info(f"Menjalankan command: {' '.join(cmd)}")
-        
-        process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        stdout, stderr = process.communicate(timeout=5)
-        
-        if process.returncode == 0:
-            logger.info(f"Browser berhasil dibuka: {url}")
-            return True
-        else:
-            logger.error(f"Chrome exit code: {process.returncode}")
-            if stderr:
-                logger.error(f"Chrome stderr: {stderr.decode()}")
-            return False
-            
-    except subprocess.TimeoutExpired:
-        logger.warning("Chrome terbuka tapi timeout - ini normal")
+        subprocess.Popen([
+            chrome_path, '--start-fullscreen', '--kiosk', url
+        ])
         return True
     except Exception as e:
-        logger.error(f"Error detail membuka browser: {e}")
-        logger.error(traceback.format_exc())
+        logger.error(f"Gagal buka Chrome: {e}")
         return False
 
-def close_browser():
-    """Tutup browser dengan cara yang lebih efisien."""
+def send_telegram(msg):
+    token = telegram_config['Telegram_Token']
+    chat_id = telegram_config['Telegram_Chat_ID']
+    if not token or not chat_id:
+        return
     try:
-        closed = False
-        for proc in psutil.process_iter(['name', 'pid']):
-            if proc.info['name'] and browser_process_name.lower() in proc.info['name'].lower():
-                try:
-                    proc.terminate()
-                    closed = True
-                except (psutil.NoSuchProcess, psutil.AccessDenied):
-                    pass
-        
-        if closed:
-            logger.info("Browser ditutup")
-            time.sleep(2)  # Delay lebih pendek
-        
-        clear_browser_cache()
-        return closed
+        requests.post(f"https://api.telegram.org/bot{token}/sendMessage",
+                      data={'chat_id': chat_id, 'text': msg}, timeout=10)
     except Exception as e:
-        logger.error(f"Error menutup browser: {e}")
-        return False
+        logger.error(f"Gagal kirim Telegram: {e}")
+
+def show_settings_gui():
+    root = tk.Tk()
+    root.title("NekoBrowser Settings")
+    frame = ttk.Frame(root, padding=20)
+    frame.pack()
+    # URL
+    ttk.Label(frame, text="URL:").grid(row=0, column=0, sticky='w')
+    url_entry = ttk.Entry(frame, width=40)
+    url_entry.insert(0, url)
+    url_entry.grid(row=0, column=1)
+    # Refresh
+    ttk.Label(frame, text="Refresh (detik):").grid(row=1, column=0, sticky='w')
+    refresh_entry = ttk.Entry(frame, width=10)
+    refresh_entry.insert(0, str(refresh_time))
+    refresh_entry.grid(row=1, column=1)
+
+    def save():
+        try:
+            with open(SETTINGS_FILE, 'w') as f:
+                f.write(f"URL={url_entry.get()}\n")
+                f.write(f"Refresh_Time={refresh_entry.get()}\n")
+            messagebox.showinfo("Info", "Tersimpan!")
+        except Exception as e:
+            messagebox.showerror("Error", str(e))
+        root.destroy()
+
+    ttk.Button(frame, text="Simpan", command=save).grid(row=2, column=0, columnspan=2, pady=10)
+    root.mainloop()
 
 def time_until_midnight():
-    """Menghitung sisa waktu sampai tengah malam."""
     now = datetime.now()
     midnight = (now + timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
     return (midnight - now).seconds
 
-def save_settings(url_entry, refresh_time_entry):
-    """Simpan pengaturan dari GUI."""
-    global url, refresh_time
-    try:
-        url = url_entry.get()
-        refresh_time = int(refresh_time_entry.get())
-        write_settings(url, refresh_time)
-        messagebox.showinfo("Info", "Pengaturan disimpan!")
-    except ValueError:
-        messagebox.showerror("Error", "Refresh time harus angka!")
+# FLASK SETUP
+app = Flask(__name__)
 
-from tkinter import ttk
+@app.route('/')
+def index():
+    return f"Neko Browser Control\nRunning: {is_browser_running()}\nURL: {url}"
 
-def show_settings_gui():
-    """GUI dengan tampilan lebih modern menggunakan ttk."""
-    root = tk.Tk()
-    root.title("NekoBrowser Panel Kontrol")
-    root.geometry("400x220")
-    root.resizable(False, False)
-    
-    # Center window
-    root.eval('tk::PlaceWindow . center')
-    
-    # Style
-    style = ttk.Style(root)
-    style.theme_use('clam')
-    style.configure('TLabel', font=('Segoe UI', 10))
-    style.configure('TEntry', font=('Segoe UI', 10))
-    style.configure('TButton', font=('Segoe UI', 10), padding=6)
-    
-    # Frame utama
-    frame = ttk.Frame(root, padding=20)
-    frame.pack(fill='both', expand=True)
-    
-    # URL Setting
-    ttk.Label(frame, text="URL Default:").grid(row=0, column=0, sticky='w', pady=5)
-    url_entry = ttk.Entry(frame, width=40)
-    url_entry.grid(row=0, column=1, pady=5)
-    
-    # Refresh Time Setting
-    ttk.Label(frame, text="Waktu Refresh (detik):").grid(row=1, column=0, sticky='w', pady=5)
-    refresh_time_entry = ttk.Entry(frame, width=40)
-    refresh_time_entry.grid(row=1, column=1, pady=5)
-    
-    # Load existing settings
-    settings = read_settings()
-    url_entry.insert(0, settings.get('URL', 'http://google.com'))
-    refresh_time_entry.insert(0, settings.get('Refresh_Time', '86400'))
-    
-    # Save Button
-    save_button = ttk.Button(frame, text="Simpan", 
-                             command=lambda: [save_settings(url_entry, refresh_time_entry), root.destroy()])
-    save_button.grid(row=2, column=0, columnspan=2, pady=15)
-    
-    root.mainloop()
+@app.route('/start')
+def start():
+    open_browser(url)
+    return "Started"
 
-class KeyboardListener:
-    """Keyboard listener yang lebih efisien."""
-    def __init__(self):
-        self.running = True
-        
-    def start(self):
-        """Start keyboard listener."""
-        try:
-            import keyboard
-            keyboard.add_hotkey('ctrl+z', self.on_hotkey)
-            while self.running:
-                time.sleep(1)  # Sleep lebih lama
-        except ImportError:
-            logger.warning("Keyboard module tidak tersedia")
-        except Exception as e:
-            logger.error(f"Error keyboard listener: {e}")
-    
-    def on_hotkey(self):
-        """Handler untuk Ctrl+Z."""
-        logger.info("Ctrl+Z ditekan")
-        show_settings_gui()
-    
-    def stop(self):
-        """Stop listener."""
-        self.running = False
+@app.route('/stop')
+def stop():
+    close_browser()
+    return "Stopped"
 
-def signal_handler(signum, frame):
-    """Handler untuk graceful shutdown."""
-    logger.info("Shutdown signal received")
-    sys.exit(0)
+@app.route('/status')
+def status():
+    return jsonify(running=is_browser_running())
+
+def start_web_server():
+    app.run(host='0.0.0.0', port=5000, debug=False)
 
 def main():
-    """Main loop yang lebih efisien."""
-    # Setup signal handlers
-    signal.signal(signal.SIGINT, signal_handler)
-    signal.signal(signal.SIGTERM, signal_handler)
-    
-    # Jalankan GUI jika settings belum ada
-    if not os.path.exists(settings_file_path):
-        show_settings_gui()
-    
-    # Start keyboard listener
-    keyboard_listener = KeyboardListener()
-    keyboard_thread = threading.Thread(target=keyboard_listener.start, daemon=True)
-    keyboard_thread.start()
-    
-    logger.info("NekoBrowser dimulai")
-    
-    # Main loop untuk media iklan - pengecekan lebih cepat
-    check_interval = refresh_time  # Gunakan waktu refresh dari settings
+    threading.Thread(target=start_web_server, daemon=True).start()
+    logger.info("NekoBrowser mulai...")
     last_check = 0
-    
     while True:
         try:
-            current_time = time.time()
-            
-            # Check midnight refresh (opsional untuk reset harian)
-            seconds_until_midnight = time_until_midnight()
-            
-            if seconds_until_midnight <= 60:
-                logger.info("Refreshing browser pada jam 00:00...")
+            now = time.time()
+            if time_until_midnight() <= 60:
                 close_browser()
                 time.sleep(2)
-                open_browser_fullscreen(url)
-                time.sleep(60)  # Skip 1 menit
-            
-            # Check browser status dengan interval sesuai pengaturan
-            elif current_time - last_check >= check_interval:
+                open_browser(url)
+                time.sleep(60)
+            elif now - last_check >= refresh_time:
                 if not is_browser_running():
-                    logger.warning("Browser tertutup! Membuka kembali untuk display iklan...")
-                    open_browser_fullscreen(url)
-                else:
-                    logger.debug("Browser display iklan sedang berjalan normal")
-                
-                last_check = current_time
-                clear_browser_cache()  # Clear cache setelah check
-            
-            # Sleep dengan interval yang lebih cepat untuk media iklan
-            time.sleep(10)  # Cek setiap 10 detik untuk respons cepat
-            
+                    open_browser(url)
+                    send_telegram("Browser tertutup, dibuka ulang.")
+                last_check = now
+                clear_browser_cache()
+            time.sleep(10)
         except KeyboardInterrupt:
-            logger.info("NekoBrowser dihentikan")
+            logger.info("Keluar oleh user")
             break
         except Exception as e:
-            logger.error(f"Error dalam main loop: {e}")
+            logger.error(traceback.format_exc())
             time.sleep(60)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    signal.signal(signal.SIGINT, lambda s, f: sys.exit(0))
+    signal.signal(signal.SIGTERM, lambda s, f: sys.exit(0))
     main()

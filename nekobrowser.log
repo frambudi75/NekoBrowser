@@ -68,3 +68,22 @@
 2025-07-23 22:44:08,232 - INFO - Shutdown signal received
 2025-07-23 22:44:14,996 - INFO - NekoBrowser dimulai
 2025-07-23 22:46:16,343 - INFO - Shutdown signal received
+2025-07-23 22:49:27,312 - INFO - NekoBrowser dimulai
+2025-07-23 22:49:36,993 - INFO - Ctrl+Z ditekan
+2025-07-23 22:50:02,487 - INFO - Shutdown signal received
+2025-07-23 22:53:48,227 - INFO - NekoBrowser dimulai
+2025-07-23 22:55:53,685 - INFO - Shutdown signal received
+2025-07-23 23:19:57,041 - INFO - NekoBrowser dimulai
+2025-07-23 23:20:01,142 - INFO - Ctrl+Z ditekan
+2025-07-23 23:27:27,356 - INFO - Ctrl+Z ditekan
+2025-07-23 23:27:57,896 - WARNING - Browser tertutup! Membuka kembali untuk display iklan...
+2025-07-23 23:27:57,896 - INFO - Membuka Chrome dari: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-23 23:27:57,896 - INFO - Menjalankan command: C:\Program Files\Google\Chrome\Application\chrome.exe --start-fullscreen --disable-extensions --disable-gpu --disable-background-networking --disable-translate --disable-sync --disable-default-apps --no-first-run --disable-background-timer-throttling --disable-renderer-backgrounding --disable-backgrounding-occluded-windows --disable-features=VizDisplayCompositor --disable-infobars --overscroll-history-navigation=0 --disable-web-security --allow-running-insecure-content http://fids.avi.id/bsd
+2025-07-23 23:28:02,906 - WARNING - Chrome terbuka tapi timeout - ini normal
+2025-07-23 23:30:03,631 - INFO - Received signal 2, shutting down gracefully...
+2025-07-23 23:30:03,677 - INFO - Browser ditutup
+2025-07-23 23:30:04,928 - INFO - Received signal 2, shutting down gracefully...
+2025-07-23 23:30:19,968 - INFO - NekoBrowser dimulai
+2025-07-23 23:30:27,741 - INFO - Received signal 2, shutting down gracefully...
+2025-07-23 23:30:28,278 - INFO - Browser ditutup
+2025-07-23 23:32:21,139 - INFO - NekoBrowser dimulai
