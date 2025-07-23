@@ -1,0 +1,39 @@
+
+NekoBrowser - Instruksi Instalasi di Linux
+===========================================
+
+1. **Instalasi Chromium (jika belum terinstal):**
+   ```bash
+   sudo apt update
+   sudo apt install chromium-browser -y
+   ```
+
+2. **Clone atau salin folder `NekoBrowser` ke home direktori:**
+   ```bash
+   mkdir -p ~/NekoBrowser
+   cp neko_enhanced.py settings.txt telegram_settings.txt ~/NekoBrowser/
+   ```
+
+3. **Edit konfigurasi sesuai kebutuhan:**
+   ```bash
+   nano ~/NekoBrowser/settings.txt
+   nano ~/NekoBrowser/telegram_settings.txt
+   ```
+
+4. **Pindahkan file service dan sesuaikan USER dan PATH:**
+   ```bash
+   sudo cp nekobrowser.service /etc/systemd/system/
+   sudo nano /etc/systemd/system/nekobrowser.service
+   ```
+
+5. **Aktifkan dan jalankan service:**
+   ```bash
+   sudo systemctl daemon-reexec
+   sudo systemctl daemon-reload
+   sudo systemctl enable nekobrowser
+   sudo systemctl start nekobrowser
+   sudo systemctl status nekobrowser
+   ```
+
+6. **Akses Web UI:**
+   Buka browser dan akses: `http://localhost:5000` atau `http://<IP_ADDRESS>:5000`

@@ -1,12 +1,15 @@
 [Unit]
-Description=NekoBrowser Service
+Description=NekoBrowser Auto-Kiosk Service
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/python3 /home/user/NekoBrowser/neko_enhanced.py
-WorkingDirectory=/home/user/NekoBrowser
+Type=simple
+ExecStart=/usr/bin/python3 /home/username/NekoBrowser/neko_enhanced.py
+WorkingDirectory=/home/username/NekoBrowser
 Restart=always
-User=user
+RestartSec=5
+User=username
+Environment=PYTHONUNBUFFERED=1
 
 [Install]
 WantedBy=multi-user.target
