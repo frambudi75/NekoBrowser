@@ -1,0 +1,70 @@
+2025-07-23 22:14:13,045 - INFO - NekoBrowser dimulai
+2025-07-23 22:14:50,069 - INFO - Shutdown signal received
+2025-07-23 22:14:51,655 - INFO - NekoBrowser dimulai
+2025-07-23 22:14:51,915 - INFO - Browser tidak berjalan, membuka...
+2025-07-23 22:14:51,915 - INFO - Browser dibuka: http://google.com
+2025-07-23 22:17:15,807 - INFO - Shutdown signal received
+2025-07-23 22:18:55,908 - INFO - NekoBrowser dimulai
+2025-07-23 22:18:56,209 - INFO - Browser tidak berjalan, membuka...
+2025-07-23 22:18:56,209 - INFO - Browser dibuka: http://google.com
+2025-07-23 22:19:03,465 - INFO - Ctrl+Z ditekan
+2025-07-23 22:19:42,085 - INFO - Ctrl+Z ditekan
+2025-07-23 22:19:51,442 - INFO - Shutdown signal received
+2025-07-23 22:19:52,777 - INFO - NekoBrowser dimulai
+2025-07-23 22:19:53,027 - INFO - Browser tidak berjalan, membuka...
+2025-07-23 22:19:53,043 - INFO - Browser dibuka: http://fids.avi.id/bsd
+2025-07-23 22:20:51,955 - INFO - Shutdown signal received
+2025-07-23 22:22:18,509 - INFO - NekoBrowser dimulai
+2025-07-23 22:22:18,806 - INFO - Browser tidak berjalan, membuka...
+2025-07-23 22:22:18,809 - INFO - Browser dibuka: http://fids.avi.id/bsd
+2025-07-23 22:26:29,686 - INFO - Ctrl+Z ditekan
+2025-07-23 22:27:18,852 - INFO - Browser tidak berjalan, membuka...
+2025-07-23 22:27:18,852 - INFO - Browser dibuka: http://fids.avi.id/bsd
+2025-07-23 22:28:55,705 - INFO - Shutdown signal received
+2025-07-23 22:29:51,433 - INFO - NekoBrowser dimulai
+2025-07-23 22:29:58,790 - INFO - Ctrl+Z ditekan
+2025-07-23 22:30:21,758 - WARNING - Browser tertutup! Membuka kembali untuk display iklan...
+2025-07-23 22:30:21,773 - INFO - Browser dibuka: http://fids.avi.id/bsd
+2025-07-23 22:32:33,781 - INFO - Ctrl+Z ditekan
+2025-07-23 22:32:49,742 - INFO - Shutdown signal received
+2025-07-23 22:32:51,671 - INFO - NekoBrowser dimulai
+2025-07-23 22:32:51,944 - WARNING - Browser tertutup! Membuka kembali untuk display iklan...
+2025-07-23 22:32:51,944 - INFO - Browser dibuka: http://fids.avi.id/bsd
+2025-07-23 22:36:49,078 - INFO - Shutdown signal received
+2025-07-23 22:37:35,019 - INFO - NekoBrowser dimulai
+2025-07-23 22:37:41,069 - INFO - Shutdown signal received
+2025-07-23 22:37:42,979 - INFO - NekoBrowser dimulai
+2025-07-23 22:37:43,317 - WARNING - Browser tertutup! Membuka kembali untuk display iklan...
+2025-07-23 22:37:43,399 - WARNING - URL http://fids.avi.id/bsd tidak dapat diakses, mencoba refresh...
+2025-07-23 22:38:11,636 - INFO - Shutdown signal received
+2025-07-23 22:38:20,787 - INFO - NekoBrowser dimulai
+2025-07-23 22:38:21,025 - WARNING - Browser tertutup! Membuka kembali untuk display iklan...
+2025-07-23 22:38:21,072 - WARNING - URL http://fids.avi.id/bsd tidak dapat diakses, mencoba refresh...
+2025-07-23 22:38:37,455 - INFO - Ctrl+Z ditekan
+2025-07-23 22:39:16,047 - INFO - Ctrl+Z ditekan
+2025-07-23 22:39:25,345 - INFO - Shutdown signal received
+2025-07-23 22:39:31,212 - INFO - NekoBrowser dimulai
+2025-07-23 22:39:31,462 - WARNING - Browser tertutup! Membuka kembali untuk display iklan...
+2025-07-23 22:39:31,526 - WARNING - URL http://fids.avi.id/bsd tidak dapat diakses, mencoba refresh...
+2025-07-23 22:40:01,560 - WARNING - Browser tertutup! Membuka kembali untuk display iklan...
+2025-07-23 22:40:01,607 - WARNING - URL http://fids.avi.id/bsd tidak dapat diakses, mencoba refresh...
+2025-07-23 22:40:31,816 - WARNING - Browser tertutup! Membuka kembali untuk display iklan...
+2025-07-23 22:40:31,864 - WARNING - URL http://fids.avi.id/bsd tidak dapat diakses, mencoba refresh...
+2025-07-23 22:40:33,090 - INFO - Shutdown signal received
+2025-07-23 22:40:38,859 - INFO - NekoBrowser dimulai
+2025-07-23 22:40:39,156 - WARNING - Browser tertutup! Membuka kembali untuk display iklan...
+2025-07-23 22:40:39,156 - INFO - Membuka Chrome dari: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-23 22:40:39,156 - INFO - Menjalankan command: C:\Program Files\Google\Chrome\Application\chrome.exe --start-fullscreen --disable-extensions --disable-gpu --disable-background-networking --disable-translate --disable-sync --disable-default-apps --no-first-run --disable-background-timer-throttling --disable-renderer-backgrounding --disable-backgrounding-occluded-windows --disable-features=VizDisplayCompositor --disable-infobars --overscroll-history-navigation=0 --disable-web-security --allow-running-insecure-content http://fids.avi.id/bsd
+2025-07-23 22:40:44,169 - WARNING - Chrome terbuka tapi timeout - ini normal
+2025-07-23 22:41:44,238 - WARNING - Browser tertutup! Membuka kembali untuk display iklan...
+2025-07-23 22:41:44,238 - INFO - Membuka Chrome dari: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-23 22:41:44,238 - INFO - Menjalankan command: C:\Program Files\Google\Chrome\Application\chrome.exe --start-fullscreen --disable-extensions --disable-gpu --disable-background-networking --disable-translate --disable-sync --disable-default-apps --no-first-run --disable-background-timer-throttling --disable-renderer-backgrounding --disable-backgrounding-occluded-windows --disable-features=VizDisplayCompositor --disable-infobars --overscroll-history-navigation=0 --disable-web-security --allow-running-insecure-content http://fids.avi.id/bsd
+2025-07-23 22:41:49,253 - WARNING - Chrome terbuka tapi timeout - ini normal
+2025-07-23 22:43:37,104 - INFO - NekoBrowser dimulai
+2025-07-23 22:43:37,380 - WARNING - Browser tertutup! Membuka kembali untuk display iklan...
+2025-07-23 22:43:37,380 - INFO - Membuka Chrome dari: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-07-23 22:43:37,380 - INFO - Menjalankan command: C:\Program Files\Google\Chrome\Application\chrome.exe --start-fullscreen --disable-extensions --disable-gpu --disable-background-networking --disable-translate --disable-sync --disable-default-apps --no-first-run --disable-background-timer-throttling --disable-renderer-backgrounding --disable-backgrounding-occluded-windows --disable-features=VizDisplayCompositor --disable-infobars --overscroll-history-navigation=0 --disable-web-security --allow-running-insecure-content http://fids.avi.id/bsd
+2025-07-23 22:43:42,399 - WARNING - Chrome terbuka tapi timeout - ini normal
+2025-07-23 22:44:08,232 - INFO - Shutdown signal received
+2025-07-23 22:44:14,996 - INFO - NekoBrowser dimulai
+2025-07-23 22:46:16,343 - INFO - Shutdown signal received

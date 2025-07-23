@@ -1,0 +1,2 @@
+URL=http://fids.avi.id/bsd
+Refresh_Time=30
