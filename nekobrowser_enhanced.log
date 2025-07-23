@@ -1,0 +1,85 @@
+2025-07-24 00:13:45,817 - INFO - NekoBrowser mulai...
+2025-07-24 00:13:46,715 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.158:5000
+2025-07-24 00:13:46,715 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-24 00:14:22,064 - INFO - 127.0.0.1 - - [24/Jul/2025 00:14:22] "GET / HTTP/1.1" 200 -
+2025-07-24 00:14:22,181 - INFO - 127.0.0.1 - - [24/Jul/2025 00:14:22] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-24 00:16:08,438 - INFO - NekoBrowser mulai...
+2025-07-24 00:16:09,300 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.158:5000
+2025-07-24 00:16:09,315 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-24 00:17:59,886 - INFO - 127.0.0.1 - - [24/Jul/2025 00:17:59] "GET / HTTP/1.1" 200 -
+2025-07-24 00:18:00,541 - INFO - 127.0.0.1 - - [24/Jul/2025 00:18:00] "GET / HTTP/1.1" 200 -
+2025-07-24 00:18:00,716 - INFO - 127.0.0.1 - - [24/Jul/2025 00:18:00] "GET / HTTP/1.1" 200 -
+2025-07-24 00:18:00,904 - INFO - 127.0.0.1 - - [24/Jul/2025 00:18:00] "GET / HTTP/1.1" 200 -
+2025-07-24 00:18:01,113 - INFO - 127.0.0.1 - - [24/Jul/2025 00:18:01] "GET / HTTP/1.1" 200 -
+2025-07-24 00:18:01,281 - INFO - 127.0.0.1 - - [24/Jul/2025 00:18:01] "GET / HTTP/1.1" 200 -
+2025-07-24 00:18:01,498 - INFO - 127.0.0.1 - - [24/Jul/2025 00:18:01] "GET / HTTP/1.1" 200 -
+2025-07-24 00:18:01,685 - INFO - 127.0.0.1 - - [24/Jul/2025 00:18:01] "GET / HTTP/1.1" 200 -
+2025-07-24 00:18:01,880 - INFO - 127.0.0.1 - - [24/Jul/2025 00:18:01] "GET / HTTP/1.1" 200 -
+2025-07-24 00:27:29,186 - INFO - NekoBrowser mulai...
+2025-07-24 00:27:30,064 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.158:5000
+2025-07-24 00:27:30,064 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-24 00:27:42,191 - INFO - 127.0.0.1 - - [24/Jul/2025 00:27:42] "GET / HTTP/1.1" 200 -
+2025-07-24 00:27:48,624 - INFO - 127.0.0.1 - - [24/Jul/2025 00:27:48] "GET /config HTTP/1.1" 200 -
+2025-07-24 00:27:53,204 - INFO - 127.0.0.1 - - [24/Jul/2025 00:27:53] "[32mPOST /test_telegram HTTP/1.1[0m" 302 -
+2025-07-24 00:27:53,204 - INFO - 127.0.0.1 - - [24/Jul/2025 00:27:53] "GET /config HTTP/1.1" 200 -
+2025-07-24 00:27:59,192 - INFO - 127.0.0.1 - - [24/Jul/2025 00:27:59] "[32mPOST /config HTTP/1.1[0m" 302 -
+2025-07-24 00:27:59,194 - INFO - 127.0.0.1 - - [24/Jul/2025 00:27:59] "GET /config HTTP/1.1" 200 -
+2025-07-24 00:28:09,368 - INFO - 127.0.0.1 - - [24/Jul/2025 00:28:09] "GET /stop HTTP/1.1" 200 -
+2025-07-24 00:28:33,388 - INFO - 192.168.1.125 - - [24/Jul/2025 00:28:33] "GET / HTTP/1.1" 200 -
+2025-07-24 00:28:33,831 - INFO - 192.168.1.125 - - [24/Jul/2025 00:28:33] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-24 00:28:42,048 - INFO - 192.168.1.125 - - [24/Jul/2025 00:28:42] "GET /start HTTP/1.1" 200 -
+2025-07-24 00:29:09,731 - INFO - 192.168.1.125 - - [24/Jul/2025 00:29:09] "GET /start HTTP/1.1" 200 -
+2025-07-24 00:29:24,953 - INFO - 192.168.1.125 - - [24/Jul/2025 00:29:24] "GET /stop HTTP/1.1" 200 -
+2025-07-24 00:29:33,206 - INFO - 192.168.1.125 - - [24/Jul/2025 00:29:33] "GET /status HTTP/1.1" 200 -
+2025-07-24 00:29:38,349 - INFO - 192.168.1.125 - - [24/Jul/2025 00:29:38] "GET /stop HTTP/1.1" 200 -
+2025-07-24 00:30:09,434 - INFO - NekoBrowser mulai...
+2025-07-24 00:30:10,687 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.158:5000
+2025-07-24 00:30:10,870 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-24 00:30:29,329 - INFO - 127.0.0.1 - - [24/Jul/2025 00:30:29] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-24 00:31:43,633 - INFO - 127.0.0.1 - - [24/Jul/2025 00:31:43] "GET /start HTTP/1.1" 200 -
+2025-07-24 00:31:58,963 - INFO - 127.0.0.1 - - [24/Jul/2025 00:31:58] "GET /start HTTP/1.1" 200 -
+2025-07-24 00:36:12,312 - INFO - NekoBrowser mulai...
+2025-07-24 00:36:13,233 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.158:5000
+2025-07-24 00:36:13,234 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-24 00:36:24,871 - INFO - 127.0.0.1 - - [24/Jul/2025 00:36:24] "GET / HTTP/1.1" 200 -
+2025-07-24 00:36:26,853 - INFO - 127.0.0.1 - - [24/Jul/2025 00:36:26] "GET / HTTP/1.1" 200 -
+2025-07-24 00:36:27,496 - INFO - 127.0.0.1 - - [24/Jul/2025 00:36:27] "GET / HTTP/1.1" 200 -
+2025-07-24 00:36:27,743 - INFO - 127.0.0.1 - - [24/Jul/2025 00:36:27] "GET / HTTP/1.1" 200 -
+2025-07-24 00:36:27,922 - INFO - 127.0.0.1 - - [24/Jul/2025 00:36:27] "GET / HTTP/1.1" 200 -
+2025-07-24 00:36:28,098 - INFO - 127.0.0.1 - - [24/Jul/2025 00:36:28] "GET / HTTP/1.1" 200 -
+2025-07-24 00:36:34,151 - INFO - 127.0.0.1 - - [24/Jul/2025 00:36:34] "GET /start HTTP/1.1" 200 -
+2025-07-24 00:43:15,109 - INFO - NekoBrowser mulai...
+2025-07-24 00:43:16,028 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.158:5000
+2025-07-24 00:43:16,028 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-24 00:43:21,443 - INFO - 127.0.0.1 - - [24/Jul/2025 00:43:21] "GET / HTTP/1.1" 200 -
+2025-07-24 00:43:25,341 - INFO - 127.0.0.1 - - [24/Jul/2025 00:43:25] "GET / HTTP/1.1" 200 -
+2025-07-24 00:43:26,048 - INFO - 127.0.0.1 - - [24/Jul/2025 00:43:26] "GET / HTTP/1.1" 200 -
+2025-07-24 00:43:26,325 - INFO - 127.0.0.1 - - [24/Jul/2025 00:43:26] "GET / HTTP/1.1" 200 -
+2025-07-24 00:43:26,520 - INFO - 127.0.0.1 - - [24/Jul/2025 00:43:26] "GET / HTTP/1.1" 200 -
+2025-07-24 00:43:26,746 - INFO - 127.0.0.1 - - [24/Jul/2025 00:43:26] "GET / HTTP/1.1" 200 -
+2025-07-24 00:43:26,913 - INFO - 127.0.0.1 - - [24/Jul/2025 00:43:26] "GET / HTTP/1.1" 200 -
+2025-07-24 00:43:27,974 - INFO - 127.0.0.1 - - [24/Jul/2025 00:43:27] "GET /status HTTP/1.1" 200 -
+2025-07-24 00:43:31,662 - INFO - 127.0.0.1 - - [24/Jul/2025 00:43:31] "GET /status HTTP/1.1" 200 -
+2025-07-24 00:43:40,138 - INFO - 127.0.0.1 - - [24/Jul/2025 00:43:40] "GET /start HTTP/1.1" 200 -
+2025-07-24 00:43:49,838 - INFO - 127.0.0.1 - - [24/Jul/2025 00:43:49] "GET /config HTTP/1.1" 200 -
+2025-07-24 00:44:04,470 - INFO - 127.0.0.1 - - [24/Jul/2025 00:44:04] "[32mPOST /test_telegram HTTP/1.1[0m" 302 -
+2025-07-24 00:44:04,499 - INFO - 127.0.0.1 - - [24/Jul/2025 00:44:04] "GET /config HTTP/1.1" 200 -
+2025-07-24 00:44:16,790 - INFO - 127.0.0.1 - - [24/Jul/2025 00:44:16] "GET /start HTTP/1.1" 200 -

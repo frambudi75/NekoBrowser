@@ -157,7 +157,13 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return f"Neko Browser Control\nRunning: {is_browser_running()}\nURL: {url}"
+    return """
+    <html><body>
+    <h1>Neko Browser Control</h1>
+    <p>Running: {}</p>
+    <p>URL: {}</p>
+    </body></html>
+    """.format(is_browser_running(), url)
 
 @app.route('/start')
 def start():
